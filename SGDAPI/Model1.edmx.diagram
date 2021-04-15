@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="89ad904e85824592984612249f9557a5" Name="Diagram1">
         <EntityTypeShape EntityType="phanmemsgdcomModel.UserConnection" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phanmemsgdcomModel.ComputerConnection" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

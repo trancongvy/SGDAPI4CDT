@@ -4,7 +4,18 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="phanmemsgdcomModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="phanmemsgdcomModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ComputerConnection">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="DatabaseName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ComputerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CPUID" Type="nvarchar" MaxLength="500" />
+          <Property Name="StructDB" Type="nvarchar" MaxLength="500" />
+          <Property Name="LicenceKey" Type="nvarchar" MaxLength="50" />
+          <Property Name="stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="UserConnection">
           <Key>
             <PropertyRef Name="stt" />
@@ -17,10 +28,10 @@
           <Property Name="stt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityContainer Name="phanmemsgdcomModelStoreContainer">
+          <EntitySet Name="ComputerConnection" EntityType="Self.ComputerConnection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserConnection" EntityType="Self.UserConnection" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="phanmemsgdcomModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -37,7 +48,19 @@
         </EntityType>
         <EntityContainer Name="phanmemsgdcomEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="UserConnections" EntityType="Self.UserConnection" />
+          <EntitySet Name="ComputerConnections" EntityType="phanmemsgdcomModel.ComputerConnection" />
         </EntityContainer>
+        <EntityType Name="ComputerConnection">
+          <Key>
+            <PropertyRef Name="stt" />
+          </Key>
+          <Property Name="DatabaseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CPUID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StructDB" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LicenceKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="stt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -53,6 +76,18 @@
                 <ScalarProperty Name="StructDb" ColumnName="StructDb" />
                 <ScalarProperty Name="TimeEx" ColumnName="TimeEx" />
                 <ScalarProperty Name="stt" ColumnName="stt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerConnections">
+            <EntityTypeMapping TypeName="phanmemsgdcomModel.ComputerConnection">
+              <MappingFragment StoreEntitySet="ComputerConnection">
+                <ScalarProperty Name="stt" ColumnName="stt" />
+                <ScalarProperty Name="LicenceKey" ColumnName="LicenceKey" />
+                <ScalarProperty Name="StructDB" ColumnName="StructDB" />
+                <ScalarProperty Name="CPUID" ColumnName="CPUID" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="DatabaseName" ColumnName="DatabaseName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -26,5 +26,6 @@ namespace SGDAPI
         }
     
         public virtual DbSet<UserConnection> UserConnections { get; set; }
+        public virtual DbSet<ComputerConnection> ComputerConnections { get; set; }
     }
 }
